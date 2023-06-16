@@ -5,3 +5,11 @@
 body {
   margin: 0;
 }
+
+header {
+  font-family: "Miltonian Tattoo", cursive;
+}
+
+main {
+  font-family: "Marko One", serif;
+}
