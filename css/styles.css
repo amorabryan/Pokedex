@@ -1,4 +1,4 @@
-.red-background {
+.red-top {
   background-color: rgb(255, 86, 87);
 }
 
@@ -35,7 +35,8 @@ img.pokeball-hamburger {
 }
 
 .hamburger-menu:hover,
-.search:hover {
+.search:hover,
+.pokemon-card {
   cursor: pointer;
 }
 
@@ -66,7 +67,7 @@ img.pokeball-hamburger {
   transition: 0.4s;
 }
 
-.white-background {
+.white-top {
   margin: 0 auto;
 }
 
@@ -95,7 +96,7 @@ img.pokeball-hamburger {
 }
 
 .pokemon-card {
-  border: 2px solid rgb(210, 210, 210);
+  border: 5px solid rgb(252, 227, 101);
   border-radius: 5px;
   background-color: rgb(217, 217, 217);
   box-shadow: 3px 4px 5px rgb(146, 146, 146);
