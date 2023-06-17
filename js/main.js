@@ -6,29 +6,57 @@ $hamburger.addEventListener('click', function () {
   $backPokeball.classList.toggle('spin');
 });
 
-const $pokemonCards = document.querySelector('.pokemon-cards');
-let kantoRegion = [];
+const $kantoRegion = document.querySelector('.kanto-region');
+const $johtoRegion = document.querySelector('.johto-region');
+const $hoennRegion = document.querySelector('.hoenn-region');
+const $sinnohRegion = document.querySelector('.sinnoh-region');
+const $unovaRegion = document.querySelector('.unova-region');
+const $kalosRegion = document.querySelector('.kalos-region');
+const $alolaRegion = document.querySelector('.alola-region');
+const $galarRegion = document.querySelector('.galar-region');
+
+let allPokemon = [];
 
 function renderCards(id, name) {
   const $columnSixth = document.createElement('div');
-  $columnSixth.className = 'column-sixth';
-  $pokemonCards.appendChild($columnSixth);
-
   const $pokemonCard = document.createElement('div');
+  const $pokemonName = document.createElement('h4');
+  const $pokemonBackground = document.createElement('div');
+  const $pokemonImg = document.createElement('img');
+  const $pokemonID = document.createElement('h5');
+
+  $columnSixth.className = 'column-sixth';
   $pokemonCard.className = 'pokemon-card flex';
+  $pokemonName.className = 'pokemon-name';
+  $pokemonBackground.className = 'pokemon-background';
+  $pokemonImg.className = 'pokemon-img';
+  $pokemonID.className = 'pokemon-id';
+
+  if (id >= 1 && id <= 151) {
+    $kantoRegion.appendChild($columnSixth);
+  } else if (id >= 152 && id <= 251) {
+    $johtoRegion.appendChild($columnSixth);
+  } else if (id >= 252 && id <= 386) {
+    $hoennRegion.appendChild($columnSixth);
+  } else if (id >= 387 && id <= 493) {
+    $sinnohRegion.appendChild($columnSixth);
+  } else if (id >= 494 && id <= 649) {
+    $unovaRegion.appendChild($columnSixth);
+  } else if (id >= 650 && id <= 721) {
+    $kalosRegion.appendChild($columnSixth);
+  } else if (id >= 722 && id <= 809) {
+    $alolaRegion.appendChild($columnSixth);
+  } else if (id >= 810 && id <= 905) {
+    $galarRegion.appendChild($columnSixth);
+  }
+
   $columnSixth.appendChild($pokemonCard);
 
-  const $pokemonName = document.createElement('h4');
-  $pokemonName.className = 'pokemon-name';
   $pokemonName.textContent = capitalizeName(name);
   $pokemonCard.appendChild($pokemonName);
 
-  const $pokemonBackground = document.createElement('div');
-  $pokemonBackground.className = 'pokemon-background';
   $pokemonCard.appendChild($pokemonBackground);
 
-  const $pokemonImg = document.createElement('img');
-  $pokemonImg.className = 'pokemon-img';
   if (id < 10) {
     $pokemonImg.setAttribute('src', '/images/assets/images/00' + id + '.png');
   } else if (id < 100) {
@@ -38,8 +66,6 @@ function renderCards(id, name) {
   }
   $pokemonBackground.appendChild($pokemonImg);
 
-  const $pokemonID = document.createElement('h5');
-  $pokemonID.className = 'pokemon-id';
   if (id < 10) {
     $pokemonID.textContent = '#00' + id;
   } else if (id < 100) {
@@ -53,13 +79,13 @@ function renderCards(id, name) {
 
 function generatePokemonCards() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://pokeapi.co/api/v2/pokedex/kanto');
+  xhr.open('GET', 'https://pokeapi.co/api/v2/pokedex/1');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    kantoRegion = xhr.response.pokemon_entries;
-    for (let i = 0; i < kantoRegion.length; i++) {
-      const pokemonId = kantoRegion[i].entry_number;
-      const pokemonName = kantoRegion[i].pokemon_species.name;
+    allPokemon = xhr.response.pokemon_entries;
+    for (let i = 0; i < allPokemon.length; i++) {
+      const pokemonId = allPokemon[i].entry_number;
+      const pokemonName = allPokemon[i].pokemon_species.name;
       renderCards(pokemonId, pokemonName);
     }
   });
