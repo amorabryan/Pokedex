@@ -14,11 +14,12 @@
 
 .hamburger-menu {
   position: absolute;
-  right: 1.35rem;
-  top: 1.35rem;
+  right: 1.45rem;
+  top: 1.45rem;
 }
 
 img.pokeball-hamburger {
+  width: 175px;
   height: 175px;
   position: absolute;
   right: -3.15rem;
@@ -34,13 +35,10 @@ img.pokeball-hamburger {
   box-shadow: 3px 3px 5px rgb(189, 58, 58);
 }
 
-.filter {
+.filter-button {
   position: fixed;
   right: 1rem;
   bottom: 1rem;
-}
-
-.filter-button {
   background-image: url("/images/assets/filter.png");
   background-size: 75%;
   background-position: center;
@@ -55,7 +53,8 @@ img.pokeball-hamburger {
 .hamburger-menu:hover,
 .search:hover,
 .pokemon-card,
-.filter-button:hover {
+.filter-button:hover,
+.close-filter {
   cursor: pointer;
 }
 
@@ -113,7 +112,7 @@ img.pokeball-hamburger {
   padding: 0.5rem;
   border-radius: 5px;
   border: 2px solid rgb(189, 58, 58);
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(245, 245, 245);
   font-weight: bold;
   color: black;
 }
@@ -127,14 +126,15 @@ img.pokeball-hamburger {
 
 .pokemon-card {
   border: 5px solid rgb(252, 227, 101);
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: rgb(217, 217, 217);
   box-shadow: 3px 4px 5px rgb(146, 146, 146);
   margin: 1rem 0.5rem 0;
 }
 
-.pokemon-img {
-  width: 90%;
+.pokemon-card:hover {
+  transform: scale(1.1) rotateZ(1deg);
+  transition: 0.5s;
 }
 
 .pokemon-background {
@@ -147,8 +147,76 @@ img.pokeball-hamburger {
   justify-content: center;
 }
 
+.pokemon-img {
+  width: 90%;
+}
+
 h4,
 h5 {
   margin: 0.5rem auto;
   font-size: 18px;
+}
+
+.filter-title {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.filter-modal {
+  background-color: rgb(240, 240, 240);
+  border: 3px solid rgb(144, 200, 172);
+  border-radius: 10px;
+  width: 200px;
+  margin: 0;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.region-select {
+  list-style-type: none;
+  margin: 0.25rem 1rem;
+  padding: 0;
+  width: 4rem;
+}
+
+.region-name {
+  padding: 0.1rem 0;
+}
+
+.region-filter:link {
+  text-decoration: none;
+  color: black;
+}
+
+.region-filter:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.region-filter:hover {
+  text-decoration: underline;
+}
+
+.region-filter:active {
+  text-decoration: underline;
+}
+
+.close-filter-btn {
+  margin: 0.25rem 0.75rem 0.75rem 0.25rem;
+  text-align: right;
+}
+
+.close-filter {
+  background-color: rgb(255, 86, 87);
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgb(189, 58, 58);
+  border: 0;
+  font-family: "Marko One", serif;
+}
+
+.close-filter:hover {
+  padding: 3px 8px;
+  border: 2px solid rgb(189, 58, 58);
 }

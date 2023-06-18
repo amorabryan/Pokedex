@@ -48,6 +48,8 @@ function renderCards(id, name) {
     $alolaRegion.appendChild($columnSixth);
   } else if (id >= 810 && id <= 905) {
     $galarRegion.appendChild($columnSixth);
+  } else if (id >= 906) {
+    return;
   }
 
   $columnSixth.appendChild($pokemonCard);
@@ -92,8 +94,6 @@ function generatePokemonCards() {
   xhr.send();
 }
 
-window.addEventListener('load', generatePokemonCards);
-
 function capitalizeName(string) {
   let name = '';
   if (string.includes('-')) {
@@ -106,3 +106,49 @@ function capitalizeName(string) {
   }
   return name;
 }
+
+const $filterLaunch = document.querySelector('.filter');
+const $filterModal = document.querySelector('.filter-modal');
+const $closeFilter = document.querySelector('.close-filter');
+const $regionSelect = document.querySelector('.region-select');
+const $regionFilter = document.querySelectorAll('.region-filter');
+const $pokemonCards = document.querySelectorAll('.pokemon-cards');
+
+$filterLaunch.addEventListener('click', function () {
+  $filterLaunch.classList.add('hidden');
+  $filterModal.classList.remove('hidden');
+});
+
+function closeFilter(event) {
+  $filterLaunch.classList.remove('hidden');
+  $filterModal.classList.add('hidden');
+}
+
+$closeFilter.addEventListener('click', closeFilter);
+
+function displayView(view) {
+  for (let i = 0; i < $pokemonCards.length; i++) {
+    const checkRegion = $pokemonCards[i].getAttribute('data-view');
+    if (checkRegion === view) {
+      $pokemonCards[i].classList.remove('hidden');
+    } else {
+      $pokemonCards[i].classList.add('hidden');
+    }
+  }
+}
+
+$regionSelect.addEventListener('click', function () {
+  if (event.target.tagName === 'A') {
+    for (let i = 0; i < $regionFilter.length; i++) {
+      if (event.target === $regionFilter[i]) {
+        data.view = event.target.getAttribute('data-view');
+        displayView(data.view);
+      }
+    }
+  } closeFilter();
+});
+
+window.addEventListener('DOMContentLoaded', function () {
+  displayView(data.view);
+  generatePokemonCards();
+});

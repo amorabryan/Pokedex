@@ -46,7 +46,23 @@
         <div class="pokemon-cards flex galar-region hidden" data-view="galar"></div>
       </div>
       <div class="filter">
-        <button class="filter-button" type="button">
+        <button class="filter-button" type="button"></button>
+      </div>
+      <div class="filter-modal hidden">
+        <h3 class="filter-title">Filter by Region</h3>
+        <ul class="region-select">
+          <li class="region-name"><a class="region-filter" data-view="kanto" href="#">Kanto</a></li>
+          <li class="region-name"><a class="region-filter" data-view="johto" href="#">Johto</a></li>
+          <li class="region-name"><a class="region-filter" data-view="hoenn" href="#">Hoenn</a></li>
+          <li class="region-name"><a class="region-filter" data-view="sinnoh" href="#">Sinnoh</a></li>
+          <li class="region-name"><a class="region-filter" data-view="unova" href="#">Unova</a></li>
+          <li class="region-name"><a class="region-filter" data-view="kalos" href="#">Kalos</a></li>
+          <li class="region-name"><a class="region-filter" data-view="alola" href="#">Alola</a></li>
+          <li class="region-name"><a class="region-filter" data-view="galar" href="#">Galar</a></li>
+        </ul>
+        <div class="close-filter-btn">
+          <button class="close-filter" type="button">Close</button>
+        </div>
       </div>
     </div>
   </main>
