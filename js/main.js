@@ -60,12 +60,13 @@ function renderCards(id, name) {
   $pokemonCard.appendChild($pokemonBackground);
 
   if (id < 10) {
-    $pokemonImg.setAttribute('src', '/images/assets/images/00' + id + '.png');
+    $pokemonImg.setAttribute('src', 'images/assets/images/00' + id + '.png');
   } else if (id < 100) {
-    $pokemonImg.setAttribute('src', '/images/assets/images/0' + id + '.png');
+    $pokemonImg.setAttribute('src', 'images/assets/images/0' + id + '.png');
   } else if (id >= 100) {
-    $pokemonImg.setAttribute('src', '/images/assets/images/' + id + '.png');
+    $pokemonImg.setAttribute('src', 'images/assets/images/' + id + '.png');
   }
+  $pokemonImg.setAttribute('alt', name + '-pokemon-photo');
   $pokemonBackground.appendChild($pokemonImg);
 
   if (id < 10) {

@@ -1,5 +1,5 @@
 /* exported data */
-let data = {
+var data = {
   pokemonSeen: [],
   pokemonCaught: [],
   previousView: '',
