@@ -24,7 +24,6 @@ img.pokeball-hamburger {
   position: absolute;
   right: -3.15rem;
   top: -3.35rem;
-  opacity: 0.25;
 }
 
 .search {
@@ -50,11 +49,18 @@ img.pokeball-hamburger {
   box-shadow: 3px 3px 4px rgb(0, 117, 255);
 }
 
+.back-button {
+  margin: 0.5rem 1rem 0;
+  color: rgb(255, 175, 175);
+}
+
 .hamburger-menu:hover,
 .search:hover,
 .pokemon-card,
 .filter-button:hover,
-.close-filter {
+.close-filter,
+.back-button,
+.tab {
   cursor: pointer;
 }
 
@@ -138,7 +144,7 @@ img.pokeball-hamburger {
 }
 
 .pokemon-background {
-  background-image: url("images/assets/pokeball-white.png");
+  background-image: url("/images/assets/pokeball-back.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -219,4 +225,47 @@ h5 {
 .close-filter:hover {
   padding: 3px 8px;
   border: 2px solid rgb(189, 58, 58);
+}
+
+.detail-img {
+  width: 10rem;
+}
+
+.detail-image,
+.pokemon-info {
+  margin: 0 0.75rem;
+}
+
+.pokemon-detail {
+  margin: 1.75rem 1rem 0;
+  display: flex;
+}
+
+.pokemon-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+h6 {
+  margin: 0.25rem 0;
+  font-size: 20px;
+  color: white;
+  font-weight: 200;
+}
+
+.tab-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem auto;
+  font-weight: bold;
+}
+
+.view {
+  display: flex;
+}
+
+.about-prop {
+  font-weight: bold;
 }

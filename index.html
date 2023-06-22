@@ -10,22 +10,36 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Marko+One&family=Miltonian+Tattoo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marko+One&family=Martel&family=Miltonian+Tattoo&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
   <header>
     <div class="header">
-      <div class="red-top">
+      <img src="images/assets/pokeball-back.png" alt="pokeball-hamburger" class="pokeball-hamburger">
+      <div class="hamburger-menu">
+        <div class="hamburger bar1"></div>
+        <div class="hamburger bar2"></div>
+        <div class="hamburger bar3"></div>
+      </div>
+      <div class="red-top home hidden">
         <h1 class="title">Pokédex</h1>
-        <img src="images/assets/pokeball-white.png" alt="pokeball-hamburger" class="pokeball-hamburger">
-        <div class="hamburger-menu">
-          <div class="hamburger bar1"></div>
-          <div class="hamburger bar2"></div>
-          <div class="hamburger bar3"></div>
+      </div>
+      <div class="red-top detail">
+        <a class="back"><i class="fa-solid fa-arrow-left-long fa-3x back-button"></i></a>
+        <div class="container">
+          <div class="pokemon-detail">
+            <div class="pokemon-background detail-image">
+              <img class="detail-img" src="images/assets/images/004.png">
+            </div>
+            <div class="pokemon-info">
+              <h6 class="pokemon-name">Charmander</h6>
+              <h6 class="pokemon-id">#004</h6>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="white-top">
+      <div class="white-top hidden">
         <form class="search-bar">
           <input type="text" class="search-form" placeholder="Search by Name or National Pokédex ID#">
           <i class="fa-solid fa-magnifying-glass search"></i>
@@ -35,7 +49,7 @@
   </header>
   <main>
     <div class="container">
-      <div class="card-container">
+      <div class="card-container hidden">
         <div class="pokemon-cards flex kanto-region" data-view="kanto"></div>
         <div class="pokemon-cards flex johto-region hidden" data-view="johto"></div>
         <div class="pokemon-cards flex hoenn-region hidden" data-view="hoenn"></div>
@@ -45,7 +59,48 @@
         <div class="pokemon-cards flex alola-region hidden" data-view="alola"></div>
         <div class="pokemon-cards flex galar-region hidden" data-view="galar"></div>
       </div>
-      <div class="filter">
+      <div class="detailed-view detail">
+        <div class="tab-container">
+          <div class="tab active" data-view="about">About</div>
+          <div class="tab" data-view="baseStats">Base Stats</div>
+          <div class="tab" data-view="evolution">Evolution</div>
+          <div class="tab" data-view="gender">Gender</div>
+        </div>
+        <div class="view-container">
+          <div class="view" data-view="about">
+            <div class="column-half column-fourth">
+              <p class="flavor-text">Test</p>
+              <p class="height">
+                <span class="about-prop">Height:</span>
+                <span class="pokemon-height">1</span>
+              </p>
+              <p class="weight">
+                <span class="about-prop">Weight:</span>
+                <span class="pokemon-weight">1</span>
+              </p>
+              <p class="abilities">
+                <span class="about-prop">Abilities:</span>
+                <span class="pokemon-abilities"></span>
+              </p>
+            </div>
+            <div class="column-half column-fourth">
+              <p class="type">
+                <span class="about-prop">Type:</span>
+                <span class="type-1">Fire</span>
+                <span class="type-2 hidden"></span>
+              </p>
+              <p class="generation">
+                <span class="about-prop">Generation:</span>
+                <span class="pokemon-generation">1</span>
+              </p>
+            </div>
+          </div>
+          <div class="view hidden" data-view="baseStats"></div>
+          <div class="view hidden" data-view="evolution"></div>
+          <div class="view hidden" data-view="gender"></div>
+        </div>
+      </div>
+      <div class="filter hidden">
         <button class="filter-button" type="button"></button>
       </div>
       <div class="filter-modal hidden">

@@ -5,12 +5,13 @@
 body {
   margin: 0;
   overflow-x: hidden;
+  font-family: "Marko One", serif;
 }
 
-header {
+.title {
   font-family: "Miltonian Tattoo", cursive;
 }
 
-main {
-  font-family: "Marko One", serif;
+.detail {
+  font-family: Martel, serif;
 }

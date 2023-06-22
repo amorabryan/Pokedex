@@ -3,6 +3,7 @@ var data = {
   pokemonSeen: [],
   pokemonCaught: [],
   previousView: '',
+  pageView: '',
   view: 'kanto'
 };
 

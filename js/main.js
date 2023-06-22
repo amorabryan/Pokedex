@@ -152,4 +152,16 @@ $regionSelect.addEventListener('click', function () {
 window.addEventListener('DOMContentLoaded', function () {
   displayView(data.view);
   generatePokemonCards();
+  tabHide();
 });
+
+const $tabContainer = document.querySelector('.tab-container');
+function tabHide() {
+  const mediaQuery = window.innerWidth;
+  if (mediaQuery >= 1000) {
+    $tabContainer.classList.add('hidden');
+  } else if (mediaQuery <= 1000) {
+    $tabContainer.classList.remove('hidden');
+  }
+}
+window.addEventListener('resize', tabHide);
