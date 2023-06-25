@@ -1,9 +1,9 @@
 /* exported data */
 var data = {
+  allPokemon: [],
   pokemonSeen: [],
   pokemonCaught: [],
-  previousView: '',
-  pageView: '',
+  pageView: 'gallery',
   view: 'kanto'
 };
 

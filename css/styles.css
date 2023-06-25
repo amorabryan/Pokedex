@@ -163,6 +163,14 @@ h5 {
   font-size: 18px;
 }
 
+.type-one,
+.type-two {
+  padding: 1px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 2px 3px 2px rgb(146, 146, 146);
+}
+
 .filter-title {
   margin: 0.5rem 0;
   text-align: center;
@@ -262,10 +270,14 @@ h6 {
   font-weight: bold;
 }
 
-.view {
+.only-flex {
   display: flex;
 }
 
 .about-prop {
   font-weight: bold;
+}
+
+.about {
+  margin-right: 10px;
 }
