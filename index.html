@@ -12,7 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Marko+One&family=Martel&family=Miltonian+Tattoo&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
   <header>
@@ -73,11 +72,11 @@
           <div class="tab-container">
             <div class="tab active" data-view="about">About</div>
             <div class="tab" data-view="baseStats">Base Stats</div>
-            <div class="tab" data-view="evolution">Evolution</div>
+            <div class="tab" data-view="sprites">Sprites</div>
             <div class="tab" data-view="gender">Gender</div>
           </div>
           <div class="view-container">
-            <div class="only-flex" data-view="about">
+            <div class="tab-content" data-view="about">
               <div class="column-half column-fourth about">
                 <p class="flavor-text"></p>
                 <p class="height">
@@ -105,13 +104,15 @@
                 </p>
               </div>
             </div>
-            <div class="only-flex hidden" data-view="baseStats">
-              <div class="chart">
-                <canvas id="bar-chart"></canvas>
+            <div class="tab-content flex hidden" data-view="baseStats">
+              <div class="chart column-full column-fourth">
+                <canvas id="stats" height="300" width="400"></canvas>
               </div>
             </div>
-            <div class="only-flex hidden" data-view="evolution"></div>
-            <div class="only-flex hidden" data-view="gender"></div>
+            <div class="tab-content flex pokemon-sprites hidden" data-view="sprites"></div>
+            <div class="tab-content hidden" data-view="gender">
+              <p>stuff</p>
+            </div>
           </div>
         </div>
       </div>
@@ -139,6 +140,7 @@
     </div>
   </main>
   <script src="js/data.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

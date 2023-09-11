@@ -98,8 +98,8 @@ img.pokeball-hamburger {
 }
 
 .spin {
-  transform: translate(-1px, 10px) rotate(180deg);
-  transition: 0.4s;
+  transform: translate(-1px, 10px) rotate(0.5turn);
+  transition-duration: 0.5s;
 }
 
 .white-top {
@@ -235,7 +235,8 @@ h5 {
   border: 2px solid rgb(189, 58, 58);
 }
 
-.detail-img {
+.detail-img,
+.sprite-img {
   width: 10rem;
 }
 
@@ -270,7 +271,7 @@ h6 {
   font-weight: bold;
 }
 
-.only-flex {
+.tab-content {
   display: flex;
 }
 
@@ -280,4 +281,47 @@ h6 {
 
 .about {
   margin-right: 10px;
+}
+
+.sprite-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab {
+  border-width: 1px;
+  border-color: rgb(175, 175, 175);
+  background-image: url("/images/assets/PokeballClosed.png");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+}
+
+.tab:hover {
+  background-size: 25px 25px;
+  background-position: center;
+}
+
+[data-view="about"].tab.active {
+  color: rgb(240, 128, 48);
+  border-top-color: rgb(240, 128, 48);
+}
+
+[data-view="baseStats"].tab.active {
+  color: rgb(104, 144, 240);
+  border-top-color: rgb(104, 144, 240);
+}
+
+[data-view="sprites"].tab.active {
+  color: rgb(120, 200, 80);
+  border-top-color: rgb(120, 200, 80);
+}
+
+[data-view="gender"].tab.active {
+  color: rgb(248, 208, 48);
+  border-top-color: rgb(248, 208, 48);
+}
+
+.chart {
+  width: 100%;
 }

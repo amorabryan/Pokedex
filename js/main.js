@@ -100,9 +100,25 @@ function capitalizeName(string) {
     const splitName = string.split('-');
     const firstName = splitName[0].charAt(0).toUpperCase() + splitName[0].substring(1);
     const secondName = splitName[1].charAt(0).toUpperCase() + splitName[1].substring(1);
-    name = firstName + '-' + secondName;
+    name = `${firstName} ${secondName}`;
   } else {
     name = string[0].toUpperCase() + string.substring(1);
+  }
+  return name;
+}
+
+function capitalizeSprite(string) {
+  let name = '';
+  const splitName = string.split('_');
+  if (splitName.length === 2) {
+    const firstName = splitName[0].charAt(0).toUpperCase() + splitName[0].substring(1);
+    const secondName = splitName[1].charAt(0).toUpperCase() + splitName[1].substring(1);
+    name = `${firstName} ${secondName}`;
+  } else if (splitName.length === 3) {
+    const firstName = splitName[0].charAt(0).toUpperCase() + splitName[0].substring(1);
+    const secondName = splitName[1].charAt(0).toUpperCase() + splitName[1].substring(1);
+    const thirdName = splitName[2].charAt(0).toUpperCase() + splitName[2].substring(1);
+    name = `${firstName} ${secondName} ${thirdName}`;
   }
   return name;
 }
@@ -133,6 +149,7 @@ function flavorText(string) {
   output = string.replaceAll('\n', ' ');
   output = output.replaceAll('\f', ' ');
   output = output.replaceAll('POKéMON', 'Pokémon');
+  output = output.replaceAll('TRAINER', 'trainer');
   return output;
 }
 
@@ -185,14 +202,35 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 const $tabContainer = document.querySelector('.tab-container');
+const $viewContainer = document.querySelector('.view-container');
+const $tabChildren = $tabContainer.children;
+const $viewChildren = $viewContainer.children;
+
+let activeTabIndex = 0;
+
 function tabHide() {
   const mediaQuery = window.innerWidth;
-  if (mediaQuery >= 1000) {
-    $tabContainer.classList.add('hidden');
-  } else if (mediaQuery <= 1000) {
-    $tabContainer.classList.remove('hidden');
+  for (let i = 0; i < $tabChildren.length; i++) {
+    if (mediaQuery > 1000) {
+      $tabChildren[i].classList.add('hidden');
+      $viewChildren[i].classList.remove('hidden');
+      $tabContainer.classList.add('hidden');
+    } else if (mediaQuery < 1000) {
+      $tabChildren[i].classList.remove('hidden');
+      $viewChildren[i].classList.add('hidden');
+      $tabContainer.classList.remove('hidden');
+    }
+  }
+
+  if (mediaQuery < 1000) {
+    $viewChildren[activeTabIndex].classList.remove('hidden');
   }
 }
+
+function tabClick(index) {
+  activeTabIndex = index;
+}
+
 window.addEventListener('resize', tabHide);
 
 const $detailName = document.querySelector('.detail-name');
@@ -255,6 +293,9 @@ function displayDetails(event) {
       }
       $pokemonHeight.textContent = calculateHeight(pokemon.height);
       $pokemonWeight.textContent = calculateWeight(pokemon.weight);
+      renderStats(pokemon);
+      const pokemonSprites = pokemon.sprites;
+      renderSprites(pokemonSprites);
       const xhr2 = new XMLHttpRequest();
       xhr2.open('GET', 'https://pokeapi.co/api/v2/pokemon-species/' + id);
       xhr2.responseType = 'json';
@@ -295,6 +336,138 @@ function viewSwap(viewSwitch) {
 }
 
 const $backButton = document.querySelector('.back-button');
+
 $backButton.addEventListener('click', function (event) {
+  while ($pokemonSprites.hasChildNodes()) {
+    $pokemonSprites.removeChild($pokemonSprites.firstChild);
+  }
   viewSwap('gallery');
 });
+
+const $tab = document.querySelectorAll('.tab');
+const $tabContent = document.querySelectorAll('.tab-content');
+
+$tabContainer.addEventListener('click', function (event) {
+  if (event.target.matches('.tab')) {
+    for (let tabIndex = 0; tabIndex < $tab.length; tabIndex++) {
+      if ($tab[tabIndex] === event.target) {
+        $tab[tabIndex].className = 'tab' + ' active';
+        tabClick(tabIndex);
+      } else {
+        $tab[tabIndex].className = 'tab';
+      }
+    }
+
+    const $dataView = event.target.getAttribute('data-view');
+
+    for (let viewIndex = 0; viewIndex < $tabContent.length; viewIndex++) {
+      if ($tabContent[viewIndex].getAttribute('data-view') === $dataView) {
+        $tabContent[viewIndex].classList.remove('hidden');
+      } else {
+        $tabContent[viewIndex].classList.add('hidden');
+      }
+    }
+  }
+});
+
+const $pokemonSprites = document.querySelector('.pokemon-sprites');
+
+function renderSprites(pokemon) {
+  const sprites = [
+    'front_default',
+    'back_default',
+    'front_shiny',
+    'back_shiny',
+    'front_female',
+    'back_female',
+    'front_shiny_female',
+    'back_shiny_female'
+  ];
+
+  for (let i = 0; i < sprites.length; i++) {
+    const $spriteView = document.createElement('div');
+    const $spriteImg = document.createElement('img');
+    const $spriteName = document.createElement('p');
+
+    $spriteView.className = 'sprite-view column-fourth column-half flex';
+    $spriteImg.className = 'sprite-img';
+    $spriteName.className = 'sprite-name';
+
+    const spriteUrl = pokemon[sprites[i]];
+    if (spriteUrl === null) {
+      $spriteView.classList.add('hidden');
+    } else {
+      $spriteImg.setAttribute('src', spriteUrl);
+    }
+
+    $spriteName.textContent = capitalizeSprite(sprites[i]);
+
+    $spriteView.appendChild($spriteImg);
+    $spriteView.appendChild($spriteName);
+    $pokemonSprites.appendChild($spriteView);
+  }
+}
+
+const $stats = document.querySelector('#stats').getContext('2d');
+
+function renderStats(pokemon) {
+  const statNames = ['HP', 'Attack', 'Defense', 'Special-Attack', 'Special-Defense', 'Speed'];
+  const statValues = [pokemon.stats[0].base_stat, pokemon.stats[1].base_stat, pokemon.stats[2].base_stat, pokemon.stats[3].base_stat, pokemon.stats[4].base_stat, pokemon.stats[5].base_stat];
+  const scatterColor = pokemon.types[0].type.name;
+  const bgColor = matchType(pokemonTypes, scatterColor);
+
+  // eslint-disable-next-line no-undef, no-unused-vars
+  const statChart = new Chart($stats, {
+    type: 'bar',
+    data: {
+      labels: statNames,
+      datasets: [{
+        backgroundColor: bgColor,
+        data: statValues
+      }]
+    },
+    options: {
+      legend: { display: false },
+      title: { display: false },
+      scales: {
+        y: {
+          min: 0,
+          grace: '5%',
+          ticks: {
+            stepSize: 5
+          }
+        }
+      }
+    }
+  });
+}
+
+const pokemonTypes = [
+  { type: 'normal', color: 'rgb(168, 168, 120)' },
+  { type: 'fire', color: 'rgb(240, 128, 48)' },
+  { type: 'water', color: 'rgb(104, 144, 240)' },
+  { type: 'grass', color: 'rgb(120, 200, 80)' },
+  { type: 'electric', color: 'rgb(248, 208, 48)' },
+  { type: 'ice', color: 'rgb(152, 216, 216)' },
+  { type: 'fighting', color: 'rgb(192, 48, 40)' },
+  { type: 'poison', color: 'rgb(160, 64, 160)' },
+  { type: 'ground', color: 'rgb(224, 192, 104)' },
+  { type: 'flying', color: 'rgb(168, 144, 240)' },
+  { type: 'psychic', color: 'rgb(248, 88, 136)' },
+  { type: 'bug', color: 'rgb(168, 184, 32)' },
+  { type: 'rock', color: 'rgb(184, 160, 56)' },
+  { type: 'ghost', color: 'rgb(112, 88, 152)' },
+  { type: 'dark', color: 'rgb(112, 88, 72)' },
+  { type: 'dragon', color: 'rgb(112, 56, 248)' },
+  { type: 'steel', color: 'rgb(184, 184, 208)' },
+  { type: 'fairy', color: 'rgb(240, 182, 188)' }
+];
+
+function matchType(typeArray, name) {
+  for (let i = 0; i < typeArray.length; i++) {
+    const typeObj = typeArray[i];
+    if (typeObj.type === name) {
+      return typeObj.color;
+    }
+  }
+}

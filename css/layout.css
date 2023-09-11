@@ -72,72 +72,166 @@
 
 .normal {
   background: rgb(168, 168, 120);
+  background-image: url("/images/assets/Others/type-icons/normal.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .fire {
   background-color: rgb(240, 128, 48);
+  background-image: url("/images/assets/Others/type-icons/fire.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .water {
   background-color: rgb(104, 144, 240);
+  background-image: url("/images/assets/Others/type-icons/water.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .grass {
   background-color: rgb(120, 200, 80);
+  background-image: url("/images/assets/Others/type-icons/grass.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .electric {
   background-color: rgb(248, 208, 48);
+  background-image: url("/images/assets/Others/type-icons/electric.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .ice {
   background-color: rgb(152, 216, 216);
+  background-image: url("/images/assets/Others/type-icons/ice.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .fighting {
   background-color: rgb(192, 48, 40);
+  background-image: url("/images/assets/Others/type-icons/fighting.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .poison {
   background-color: rgb(160, 64, 160);
+  background-image: url("/images/assets/Others/type-icons/poison.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .ground {
   background-color: rgb(224, 192, 104);
+  background-image: url("/images/assets/Others/type-icons/ground.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .flying {
   background-color: rgb(168, 144, 240);
+  background-image: url("/images/assets/Others/type-icons/flying.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .psychic {
   background-color: rgb(248, 88, 136);
+  background-image: url("/images/assets/Others/type-icons/psychic.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .bug {
   background-color: rgb(168, 184, 32);
+  background-image: url("/images/assets/Others/type-icons/bug.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .rock {
   background-color: rgb(184, 160, 56);
+  background-image: url("/images/assets/Others/type-icons/rock.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .ghost {
   background-color: rgb(112, 88, 152);
+  background-image: url("/images/assets/Others/type-icons/ghost.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .dark {
   background-color: rgb(112, 88, 72);
+  background-image: url("/images/assets/Others/type-icons/dark.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .dragon {
   background-color: rgb(112, 56, 248);
+  background-image: url("/images/assets/Others/type-icons/dragon.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .steel {
   background-color: rgb(184, 184, 208);
+  background-image: url("/images/assets/Others/type-icons/steel.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
 }
 
 .fairy {
   background-color: rgb(240, 182, 188);
+  background-image: url("/images/assets/Others/type-icons/fairy.svg");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+}
+
+.normal:hover,
+.fire:hover,
+.water:hover,
+.grass:hover,
+.electric:hover,
+.ice:hover,
+.fighting:hover,
+.poison:hover,
+.ground:hover,
+.flying:hover,
+.psychic:hover,
+.bug:hover,
+.rock:hover,
+.ghost:hover,
+.dark:hover,
+.dragon:hover,
+.steel:hover,
+.fairy:hover {
+  background-size: 25px 25px;
+  background-position: center;
 }
