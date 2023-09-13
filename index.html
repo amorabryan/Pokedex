@@ -76,7 +76,7 @@
             <div class="tab" data-view="gender">Gender</div>
           </div>
           <div class="view-container">
-            <div class="tab-content" data-view="about">
+            <div class="tab-content center-about" data-view="about">
               <div class="column-half column-fourth about">
                 <p class="flavor-text"></p>
                 <p class="height">
@@ -106,12 +106,14 @@
             </div>
             <div class="tab-content flex hidden" data-view="baseStats">
               <div class="chart column-full column-fourth">
-                <canvas id="stats" height="300" width="400"></canvas>
+                <canvas id="stats" height="300" width="500"></canvas>
               </div>
             </div>
             <div class="tab-content flex pokemon-sprites hidden" data-view="sprites"></div>
-            <div class="tab-content hidden" data-view="gender">
-              <p>stuff</p>
+            <div class="tab-content flex hidden" data-view="gender">
+              <div class="chart column-full column-fourth">
+                <canvas id="gender" height="300" width="300"></canvas>
+              </div>
             </div>
           </div>
         </div>
@@ -140,7 +142,7 @@
     </div>
   </main>
   <script src="js/data.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

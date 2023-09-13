@@ -312,6 +312,7 @@ function displayDetails(event) {
         $flavorText.textContent = flavor;
         const generation = capitalizeGen(pokemon.generation.name);
         $pokemonGeneration.textContent = generation;
+        renderGender(pokemon);
       });
       xhr2.send();
     });
@@ -409,6 +410,10 @@ function renderSprites(pokemon) {
 }
 
 const $stats = document.querySelector('#stats').getContext('2d');
+const $gender = document.querySelector('#gender').getContext('2d');
+
+let statChart;
+let genderPie;
 
 function renderStats(pokemon) {
   const statNames = ['HP', 'Attack', 'Defense', 'Special-Attack', 'Special-Defense', 'Speed'];
@@ -416,28 +421,55 @@ function renderStats(pokemon) {
   const scatterColor = pokemon.types[0].type.name;
   const bgColor = matchType(pokemonTypes, scatterColor);
 
-  // eslint-disable-next-line no-undef, no-unused-vars
-  const statChart = new Chart($stats, {
+  if (statChart) {
+    statChart.destroy();
+  }
+
+  // eslint-disable-next-line no-undef
+  statChart = new Chart($stats, {
     type: 'bar',
     data: {
       labels: statNames,
       datasets: [{
+        label: "Pokémon's Stats",
         backgroundColor: bgColor,
         data: statValues
       }]
     },
     options: {
-      legend: { display: false },
-      title: { display: false },
       scales: {
         y: {
-          min: 0,
+          beginAtZero: true,
           grace: '5%',
           ticks: {
             stepSize: 5
           }
         }
       }
+    }
+  });
+}
+
+function renderGender(pokemon) {
+  const pokemonGender = pokemon.gender_rate;
+  const femalePercent = ((pokemonGender / 8) * 100);
+  if (genderPie) {
+    genderPie.destroy();
+  }
+
+  // eslint-disable-next-line no-undef
+  genderPie = new Chart($gender, {
+    type: 'pie',
+    data: {
+      labels: ['Female', 'Male'],
+      datasets: [{
+        label: 'Gender Ratio',
+        backgroundColor: [
+          'rgba(255, 137, 180, 0.5)',
+          'rgba(44, 130, 201, 0.5)'
+        ],
+        data: [femalePercent, 100 - femalePercent]
+      }]
     }
   });
 }
