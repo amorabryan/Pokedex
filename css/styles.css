@@ -24,7 +24,6 @@ img.pokeball-hamburger {
   position: absolute;
   right: -3.15rem;
   top: -3.35rem;
-  opacity: 0.25;
 }
 
 .search {
@@ -50,11 +49,18 @@ img.pokeball-hamburger {
   box-shadow: 3px 3px 4px rgb(0, 117, 255);
 }
 
+.back-button {
+  margin: 0.5rem 1rem 0;
+  color: rgb(255, 175, 175);
+}
+
 .hamburger-menu:hover,
 .search:hover,
 .pokemon-card,
 .filter-button:hover,
-.close-filter {
+.close-filter,
+.back-button,
+.tab {
   cursor: pointer;
 }
 
@@ -92,8 +98,8 @@ img.pokeball-hamburger {
 }
 
 .spin {
-  transform: translate(-1px, 10px) rotate(180deg);
-  transition: 0.4s;
+  transform: translate(-1px, 10px) rotate(0.5turn);
+  transition-duration: 0.5s;
 }
 
 .white-top {
@@ -138,7 +144,7 @@ img.pokeball-hamburger {
 }
 
 .pokemon-background {
-  background-image: url("images/assets/pokeball-white.png");
+  background-image: url("/images/assets/pokeball-back.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -155,6 +161,14 @@ h4,
 h5 {
   margin: 0.5rem auto;
   font-size: 18px;
+}
+
+.type-one,
+.type-two {
+  padding: 1px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 2px 3px 2px rgb(146, 146, 146);
 }
 
 .filter-title {
@@ -219,4 +233,101 @@ h5 {
 .close-filter:hover {
   padding: 3px 8px;
   border: 2px solid rgb(189, 58, 58);
+}
+
+.detail-img,
+.sprite-img {
+  width: 10rem;
+}
+
+.detail-image,
+.pokemon-info {
+  margin: 0 0.75rem;
+}
+
+.pokemon-detail {
+  margin: 1.75rem 1rem 0;
+  display: flex;
+}
+
+.pokemon-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+h6 {
+  margin: 0.25rem 0;
+  font-size: 20px;
+  color: white;
+  font-weight: 200;
+}
+
+.tab-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem auto;
+  font-weight: bold;
+}
+
+.tab-content {
+  display: flex;
+}
+
+.about-prop {
+  font-weight: bold;
+}
+
+.center-about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about {
+  margin-right: 10px;
+}
+
+.sprite-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab {
+  border-width: 1px;
+  border-color: rgb(175, 175, 175);
+  background-image: url("/images/assets/PokeballClosed.png");
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+}
+
+.tab:hover {
+  background-size: 25px 25px;
+  background-position: center;
+}
+
+[data-view="about"].tab.active {
+  color: rgb(240, 128, 48);
+  border-top-color: rgb(240, 128, 48);
+}
+
+[data-view="baseStats"].tab.active {
+  color: rgb(104, 144, 240);
+  border-top-color: rgb(104, 144, 240);
+}
+
+[data-view="sprites"].tab.active {
+  color: rgb(120, 200, 80);
+  border-top-color: rgb(120, 200, 80);
+}
+
+[data-view="gender"].tab.active {
+  color: rgb(248, 208, 48);
+  border-top-color: rgb(248, 208, 48);
+}
+
+.chart {
+  width: 100%;
 }
